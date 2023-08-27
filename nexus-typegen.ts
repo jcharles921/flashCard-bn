@@ -79,14 +79,18 @@ export interface NexusGenFieldTypes {
   Mutation: { // field return type
     createCard: NexusGenRootTypes['Card']; // Card!
     createCollection: NexusGenRootTypes['Collection']; // Collection!
+    createUser: NexusGenRootTypes['User']; // User!
     deleteCard: NexusGenRootTypes['Card']; // Card!
     deleteCollection: NexusGenRootTypes['Collection']; // Collection!
+    deleteUser: NexusGenRootTypes['User']; // User!
     updateCard: NexusGenRootTypes['Card']; // Card!
     updateCollection: NexusGenRootTypes['Collection']; // Collection!
+    updateUser: NexusGenRootTypes['User']; // User!
   }
   Query: { // field return type
     allCards: NexusGenRootTypes['Card'][]; // [Card!]!
     allCollections: NexusGenRootTypes['Collection'][]; // [Collection!]!
+    user: NexusGenRootTypes['User'] | null; // User
   }
   User: { // field return type
     email: string; // String!
@@ -113,14 +117,18 @@ export interface NexusGenFieldTypeNames {
   Mutation: { // field return type name
     createCard: 'Card'
     createCollection: 'Collection'
+    createUser: 'User'
     deleteCard: 'Card'
     deleteCollection: 'Collection'
+    deleteUser: 'User'
     updateCard: 'Card'
     updateCollection: 'Collection'
+    updateUser: 'User'
   }
   Query: { // field return type name
     allCards: 'Card'
     allCollections: 'Collection'
+    user: 'User'
   }
   User: { // field return type name
     email: 'String'
@@ -142,10 +150,18 @@ export interface NexusGenArgTypes {
       description: string; // String!
       title: string; // String!
     }
+    createUser: { // args
+      email: string; // String!
+      name: string; // String!
+      password: string; // String!
+    }
     deleteCard: { // args
       id: number; // Int!
     }
     deleteCollection: { // args
+      id: number; // Int!
+    }
+    deleteUser: { // args
       id: number; // Int!
     }
     updateCard: { // args
@@ -159,6 +175,17 @@ export interface NexusGenArgTypes {
       description?: string | null; // String
       id: number; // Int!
       title?: string | null; // String
+    }
+    updateUser: { // args
+      email?: string | null; // String
+      id: number; // Int!
+      name?: string | null; // String
+      password?: string | null; // String
+    }
+  }
+  Query: {
+    user: { // args
+      id: number; // Int!
     }
   }
 }

@@ -21,15 +21,19 @@ type Collection {
 type Mutation {
   createCard(hint: String!, question: String!, response: String!, title: String!): Card!
   createCollection(authorEmail: String!, description: String!, title: String!): Collection!
+  createUser(email: String!, name: String!, password: String!): User!
   deleteCard(id: Int!): Card!
   deleteCollection(id: Int!): Collection!
+  deleteUser(id: Int!): User!
   updateCard(hint: String, id: Int!, question: String, response: String, title: String): Card!
   updateCollection(description: String, id: Int!, title: String): Collection!
+  updateUser(email: String, id: Int!, name: String, password: String): User!
 }
 
 type Query {
   allCards: [Card!]!
   allCollections: [Collection!]!
+  user(id: Int!): User
 }
 
 type User {
