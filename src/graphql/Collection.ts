@@ -1,14 +1,12 @@
 import { extendType, nonNull, objectType, stringArg, intArg } from "nexus";
-import { NexusGenObjects } from "../../nexus-typegen";
 
 export const Collections = objectType({
   name: "Collection", // <- Name of your type
   definition(t) {
-    t.nonNull.int("id");
     t.nonNull.string("title");
-    t.nonNull.string("author");
-    t.nonNull.string("authorEmail");
-    t.nonNull.string("description");
+    t.string("author");
+    t.string("authorEmail");
+    t.string("description");
   },
 });
 
@@ -54,11 +52,11 @@ export const DeleteCollections = extendType({
     t.nonNull.field("deleteCollection", {
       type: "Collection",
       args: {
-        id: nonNull(intArg()),
+        title: nonNull(intArg()),
       },
       resolve(_root, args, ctx) {
         return ctx.prisma.collection.delete({
-          where: { id: args.id },
+          where: { title: args.title },
         });
       },
     });

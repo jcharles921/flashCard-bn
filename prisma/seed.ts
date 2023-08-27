@@ -16,7 +16,11 @@ console.log(`Seeding finished.`);
 }
 
 main()
-    .catch((e) => {
+    .catch(async (e) => {
+
+        await prisma.collection.deleteMany({});
+        await prisma.user.deleteMany({}); 
+        await prisma.card.deleteMany({});
         console.error(e);
         process.exit(1);
     })

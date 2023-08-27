@@ -11,10 +11,9 @@ type Card {
 }
 
 type Collection {
-  author: String!
-  authorEmail: String!
-  description: String!
-  id: Int!
+  author: String
+  authorEmail: String
+  description: String
   title: String!
 }
 
@@ -23,8 +22,8 @@ type Mutation {
   createCollection(authorEmail: String!, description: String!, title: String!): Collection!
   createUser(email: String!, name: String!, password: String!): User!
   deleteCard(id: Int!): Card!
-  deleteCollection(id: Int!): Collection!
-  deleteUser(id: Int!): User!
+  deleteCollection(title: Int!): Collection!
+  deleteUser(email: String!): User!
   updateCard(collectionName: String!, hint: String, id: Int!, question: String, response: String): Card!
   updateCollection(description: String, id: Int!, title: String): Collection!
   updateUser(email: String, id: Int!, name: String, password: String): User!
@@ -33,7 +32,8 @@ type Mutation {
 type Query {
   allCards: [Card!]!
   allCollections: [Collection!]!
-  user(id: Int!): User
+  allUsers: [User!]!
+  getOneUser(id: Int!): User
 }
 
 type User {
