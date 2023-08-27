@@ -11,7 +11,7 @@ type Collection {
 }
 
 type Mutation {
-  createCollection(Author: String!, Title: String!): Collection!
+  createCollection(authorEmail: String!, description: String!, title: String!): Collection!
 }
 
 type Query {

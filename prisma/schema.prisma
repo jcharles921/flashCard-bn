@@ -33,7 +33,7 @@ model Card {
   hint        String?
   question   String
   response    String
-  collectionId Int?
-  Collection  Collection? @relation(fields: [collectionId], references: [id])
+  collectionName String
+  Collection  Collection? @relation(fields: [collectionName], references: [title])
 
 }

@@ -84,8 +84,9 @@ export interface NexusGenFieldTypeNames {
 export interface NexusGenArgTypes {
   Mutation: {
     createCollection: { // args
-      Author: string; // String!
-      Title: string; // String!
+      authorEmail: string; // String!
+      description: string; // String!
+      title: string; // String!
     }
   }
 }
