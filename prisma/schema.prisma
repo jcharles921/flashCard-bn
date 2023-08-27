@@ -9,14 +9,31 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+model User {
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  email       String   @unique
+  name        String?
+  password    String
+  collections Collection[]
+}
 model Collection {
   id          Int      @id @default(autoincrement())   // 4
   createdAt   DateTime @default(now())  // 5
-  url         String
+  title       String   @unique
+  authorEmail String 
+  author      User?    @relation(fields: [authorEmail], references: [email])
+  description String  @default("")
+  Cards       Card[]
+
 }
 model Card {
   id          Int      @id @default(autoincrement())
-  title       String
-  description String
+  createdAt   DateTime @default(now())
+  hint        String?
+  question   String
+  response    String
+  collectionId Int?
+  Collection  Collection? @relation(fields: [collectionId], references: [id])
 
 }
