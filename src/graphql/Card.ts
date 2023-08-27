@@ -7,6 +7,7 @@ export const Card = objectType({
         t.nonNull.string("question");
         t.nonNull.string("response");
         t.nonNull.string("hint");
+        t.nonNull.string("title");
        
     },
 

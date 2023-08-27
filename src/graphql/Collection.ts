@@ -19,7 +19,7 @@ export const CollectionQuery = extendType({
         t.nonNull.list.nonNull.field("allCollections", {
             type: "Collection",
             resolve(_root, _args, ctx) {
-                return ctx.prisma.Collection.findMany();
+                return ctx.prisma.collection.findMany();
             },
         });
     },
@@ -32,14 +32,16 @@ export const CollectionMutation = extendType({
         t.nonNull.field("createCollection", {
             type: "Collection",
             args: {
-                Title: nonNull(stringArg()),
-                Author: nonNull(stringArg()),
+                title: nonNull(stringArg()),
+                authorEmail: nonNull(stringArg()),
+                description: nonNull(stringArg()),
     },
             resolve(_root, args, ctx) {
                 const newCollection = ctx.prisma.collection.create({
                     data: {
-                        Title: args.Title,
-                        Author: args.Author,
+                        title: args.title,
+                        authorEmail: args.authorEmail,
+                        description: args.description,
                     }
                 });
                 return newCollection;
