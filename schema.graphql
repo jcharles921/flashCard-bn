@@ -2,16 +2,18 @@
 ### Do not make changes to this file directly
 
 
-type Link {
+type Collection {
+  author: String!
+  authorEmail: String!
   description: String!
   id: Int!
-  url: String!
+  title: String!
 }
 
 type Mutation {
-  post(description: String!, url: String!): Link!
+  createCollection(Author: String!, Title: String!): Collection!
 }
 
 type Query {
-  feed: [Link!]!
+  allCollections: [Collection!]!
 }
