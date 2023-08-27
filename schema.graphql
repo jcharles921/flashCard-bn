@@ -3,11 +3,11 @@
 
 
 type Card {
+  collectionName: String!
   hint: String!
   id: Int!
   question: String!
   response: String!
-  title: String!
 }
 
 type Collection {
@@ -19,13 +19,13 @@ type Collection {
 }
 
 type Mutation {
-  createCard(hint: String!, question: String!, response: String!, title: String!): Card!
+  createCard(collectionName: String!, hint: String!, question: String!, response: String!): Card!
   createCollection(authorEmail: String!, description: String!, title: String!): Collection!
   createUser(email: String!, name: String!, password: String!): User!
   deleteCard(id: Int!): Card!
   deleteCollection(id: Int!): Collection!
   deleteUser(id: Int!): User!
-  updateCard(hint: String, id: Int!, question: String, response: String, title: String): Card!
+  updateCard(collectionName: String!, hint: String, id: Int!, question: String, response: String): Card!
   updateCollection(description: String, id: Int!, title: String): Collection!
   updateUser(email: String, id: Int!, name: String, password: String): User!
 }

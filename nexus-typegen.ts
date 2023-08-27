@@ -29,11 +29,11 @@ export interface NexusGenScalars {
 
 export interface NexusGenObjects {
   Card: { // root type
+    collectionName: string; // String!
     hint: string; // String!
     id: number; // Int!
     question: string; // String!
     response: string; // String!
-    title: string; // String!
   }
   Collection: { // root type
     author: string; // String!
@@ -63,11 +63,11 @@ export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 
 export interface NexusGenFieldTypes {
   Card: { // field return type
+    collectionName: string; // String!
     hint: string; // String!
     id: number; // Int!
     question: string; // String!
     response: string; // String!
-    title: string; // String!
   }
   Collection: { // field return type
     author: string; // String!
@@ -101,11 +101,11 @@ export interface NexusGenFieldTypes {
 
 export interface NexusGenFieldTypeNames {
   Card: { // field return type name
+    collectionName: 'String'
     hint: 'String'
     id: 'Int'
     question: 'String'
     response: 'String'
-    title: 'String'
   }
   Collection: { // field return type name
     author: 'String'
@@ -140,10 +140,10 @@ export interface NexusGenFieldTypeNames {
 export interface NexusGenArgTypes {
   Mutation: {
     createCard: { // args
+      collectionName: string; // String!
       hint: string; // String!
       question: string; // String!
       response: string; // String!
-      title: string; // String!
     }
     createCollection: { // args
       authorEmail: string; // String!
@@ -165,11 +165,11 @@ export interface NexusGenArgTypes {
       id: number; // Int!
     }
     updateCard: { // args
+      collectionName: string; // String!
       hint?: string | null; // String
       id: number; // Int!
       question?: string | null; // String
       response?: string | null; // String
-      title?: string | null; // String
     }
     updateCollection: { // args
       description?: string | null; // String

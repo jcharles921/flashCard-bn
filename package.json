@@ -6,13 +6,20 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "ts-node-dev --transpile-only --no-notify --exit-child src/index.ts",
-    "generate": "ts-node --transpile-only src/schema.ts"
+    "generate": "ts-node --transpile-only src/schema.ts",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "ts-node": "ts-node --compiler-options '{\"module\":\"commonjs\"}'",
+    "seed": "ts-node prisma/seed.ts",
+    "unseed":"ts-node prisma/unseed.ts",
+    "seeDb":"npx prisma studio"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/node": "^20.5.7",
     "prisma": "^5.0.0",
+    "ts-node": "^10.9.1",
     "ts-node-dev": "^1.1.8",
     "typescript": "^4.9.5"
   },
@@ -20,6 +27,7 @@
     "@prisma/client": "^5.0.0",
     "apollo-server": "^3.12.0",
     "graphql": "^15.8.0",
-    "nexus": "^1.3.0"
+    "nexus": "^1.3.0",
+    "prettier": "^3.0.2"
   }
 }

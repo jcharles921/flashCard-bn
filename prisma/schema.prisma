@@ -18,11 +18,12 @@ model User {
   collections Collection[]
 }
 model Collection {
-  id          Int      @id @default(autoincrement())   // 4
+  id          String      @id @default(uuid())   // 4
   createdAt   DateTime @default(now())  // 5
   title       String   @unique
-  authorEmail String 
-  author      User?    @relation(fields: [authorEmail], references: [email])
+  authorEmail String
+  author      String
+  authorRelations      User   @relation(fields: [authorEmail], references: [email])
   description String  @default("")
   Cards       Card[]
 
