@@ -1,4 +1,4 @@
-import { extendType, nonNull, objectType, stringArg } from "nexus";  
+import { extendType, nonNull, objectType, stringArg,intArg } from "nexus";  
 import { NexusGenObjects } from "../../nexus-typegen";  
 
 export const Collections = objectType({
@@ -26,7 +26,7 @@ export const CollectionQuery = extendType({
 
 });
 
-export const CollectionMutation = extendType({
+export const CreateCollection = extendType({
     type: "Mutation",
     definition(t) {
         t.nonNull.field("createCollection", {
@@ -51,4 +51,43 @@ export const CollectionMutation = extendType({
 });
 
 
-
+export const DeleteCollections = extendType({
+    type: "Mutation",
+    definition(t) {
+      t.nonNull.field("deleteCollection", {
+        type: "Collection",
+        args: {
+          id: nonNull(intArg()),
+        },
+        resolve(_root, args, ctx) {
+          return ctx.prisma.collection.delete({
+            where: { id: args.id },
+          });
+        },
+      });
+    },
+  });
+  
+  export const UpdateCollection = extendType({
+    type: "Mutation",
+    definition(t) {
+      t.nonNull.field("updateCollection", {
+        type: "Collection",
+        args: {
+          id: nonNull(intArg()),
+          title: stringArg(),
+          description: stringArg(),
+        },
+        resolve(_root, args, ctx) {
+          return ctx.prisma.collection.update({
+            where: { id: args.id },
+            data: {
+              title: args.title,
+              description: args.description,
+            },
+          });
+        },
+      });
+    },
+  });
+  
