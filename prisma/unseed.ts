@@ -4,6 +4,7 @@ const prisma = new PrismaClient();
 
 async function undoSeed() {
   try {
+    await prisma.card.deleteMany({});
     await prisma.collection.deleteMany({});
     await prisma.user.deleteMany({}); 
    

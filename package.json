@@ -2,7 +2,7 @@
   "name": "flashcard-bn",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "ts-node-dev --transpile-only --no-notify --exit-child src/index.ts",
@@ -11,7 +11,9 @@
     "ts-node": "ts-node --compiler-options '{\"module\":\"commonjs\"}'",
     "seed": "ts-node prisma/seed.ts",
     "unseed":"ts-node prisma/unseed.ts",
-    "seeDb":"npx prisma studio"
+    "seeDb":"npx prisma studio",
+    "build": "npm run generate && npx prisma migrate deploy && npm run seed",
+    "start": "npm run dev"
   },
   "keywords": [],
   "author": "",
