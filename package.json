@@ -13,7 +13,7 @@
     "unseed":"ts-node prisma/unseed.ts",
     "seeDb":"npx prisma studio",
     "build": "echo \"OK: no build necessary\"",
-    "start": "npm run dev"
+    "start": "node src/index.ts"
   },
   "keywords": [],
   "author": "",

@@ -7,7 +7,7 @@ export const server = new ApolloServer({
   context: createContext,
 });
 const path = "api";
-const port = 4000;
+const port = 4000 || process.env.PORT;
 server.listen({ path,port }).then(({ url }) => {
   console.log(`🚀  Server ready at ${url}${path}`);
 });
