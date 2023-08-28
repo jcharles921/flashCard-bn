@@ -4,8 +4,7 @@
   - You are about to drop the `Link` table. If the table is not empty, all the data it contains will be lost.
 
 */
--- DropTable
-DROP TABLE "Link";
+
 
 -- CreateTable
 CREATE TABLE "User" (
@@ -23,6 +22,7 @@ CREATE TABLE "Collection" (
     "id" SERIAL NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "title" TEXT NOT NULL,
+    "author" TEXT NOT NULL,
     "authorEmail" TEXT NOT NULL,
     "description" TEXT NOT NULL DEFAULT '',
 
