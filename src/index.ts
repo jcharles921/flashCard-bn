@@ -5,9 +5,10 @@ import { createContext } from "./context";
 export const server = new ApolloServer({
   schema,
   context: createContext,
+  introspection: true,
 });
-const path = "api";
-const port = 4000 || process.env.PORT;
-server.listen({ path,port }).then(({ url }) => {
-  console.log(`🚀  Server ready at ${url}${path}`);
+
+
+server.listen({ port:process.env.PORT || 4000 }).then(({ url }) => {
+  console.log(`🚀  Server ready at ${url}`);
 });
