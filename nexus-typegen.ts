@@ -29,11 +29,11 @@ export interface NexusGenScalars {
 
 export interface NexusGenObjects {
   Card: { // root type
+    collectionName: string; // String!
     hint: string; // String!
     id: number; // Int!
     question: string; // String!
     response: string; // String!
-    title: string; // String!
   }
   Collection: { // root type
     author: string; // String!
@@ -63,11 +63,11 @@ export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 
 export interface NexusGenFieldTypes {
   Card: { // field return type
+    collectionName: string; // String!
     hint: string; // String!
     id: number; // Int!
     question: string; // String!
     response: string; // String!
-    title: string; // String!
   }
   Collection: { // field return type
     author: string; // String!
@@ -79,14 +79,18 @@ export interface NexusGenFieldTypes {
   Mutation: { // field return type
     createCard: NexusGenRootTypes['Card']; // Card!
     createCollection: NexusGenRootTypes['Collection']; // Collection!
+    createUser: NexusGenRootTypes['User']; // User!
     deleteCard: NexusGenRootTypes['Card']; // Card!
     deleteCollection: NexusGenRootTypes['Collection']; // Collection!
+    deleteUser: NexusGenRootTypes['User']; // User!
     updateCard: NexusGenRootTypes['Card']; // Card!
     updateCollection: NexusGenRootTypes['Collection']; // Collection!
+    updateUser: NexusGenRootTypes['User']; // User!
   }
   Query: { // field return type
     allCards: NexusGenRootTypes['Card'][]; // [Card!]!
     allCollections: NexusGenRootTypes['Collection'][]; // [Collection!]!
+    user: NexusGenRootTypes['User'] | null; // User
   }
   User: { // field return type
     email: string; // String!
@@ -97,11 +101,11 @@ export interface NexusGenFieldTypes {
 
 export interface NexusGenFieldTypeNames {
   Card: { // field return type name
+    collectionName: 'String'
     hint: 'String'
     id: 'Int'
     question: 'String'
     response: 'String'
-    title: 'String'
   }
   Collection: { // field return type name
     author: 'String'
@@ -113,14 +117,18 @@ export interface NexusGenFieldTypeNames {
   Mutation: { // field return type name
     createCard: 'Card'
     createCollection: 'Collection'
+    createUser: 'User'
     deleteCard: 'Card'
     deleteCollection: 'Collection'
+    deleteUser: 'User'
     updateCard: 'Card'
     updateCollection: 'Collection'
+    updateUser: 'User'
   }
   Query: { // field return type name
     allCards: 'Card'
     allCollections: 'Collection'
+    user: 'User'
   }
   User: { // field return type name
     email: 'String'
@@ -132,15 +140,20 @@ export interface NexusGenFieldTypeNames {
 export interface NexusGenArgTypes {
   Mutation: {
     createCard: { // args
+      collectionName: string; // String!
       hint: string; // String!
       question: string; // String!
       response: string; // String!
-      title: string; // String!
     }
     createCollection: { // args
       authorEmail: string; // String!
       description: string; // String!
       title: string; // String!
+    }
+    createUser: { // args
+      email: string; // String!
+      name: string; // String!
+      password: string; // String!
     }
     deleteCard: { // args
       id: number; // Int!
@@ -148,17 +161,31 @@ export interface NexusGenArgTypes {
     deleteCollection: { // args
       id: number; // Int!
     }
+    deleteUser: { // args
+      id: number; // Int!
+    }
     updateCard: { // args
+      collectionName: string; // String!
       hint?: string | null; // String
       id: number; // Int!
       question?: string | null; // String
       response?: string | null; // String
-      title?: string | null; // String
     }
     updateCollection: { // args
       description?: string | null; // String
       id: number; // Int!
       title?: string | null; // String
+    }
+    updateUser: { // args
+      email?: string | null; // String
+      id: number; // Int!
+      name?: string | null; // String
+      password?: string | null; // String
+    }
+  }
+  Query: {
+    user: { // args
+      id: number; // Int!
     }
   }
 }
