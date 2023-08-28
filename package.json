@@ -12,7 +12,7 @@
     "seed": "ts-node prisma/seed.ts",
     "unseed":"ts-node prisma/unseed.ts",
     "seeDb":"npx prisma studio",
-    "build": "npm run dev",
+    "build": "echo \"OK: no build necessary\"",
     "start": "npm run dev"
   },
   "keywords": [],
