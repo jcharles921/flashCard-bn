@@ -3,6 +3,7 @@ import { extendType, nonNull, objectType, stringArg, intArg } from "nexus";
 export const User = objectType({
   name: "User",
   definition(t) {
+    t.id
     t.nonNull.string("password");
     t.nonNull.string("name");
     t.nonNull.string("email");
@@ -35,7 +36,7 @@ export const CreateUser = extendType({
 export const UserQuery = extendType({
   type: "Query",
   definition(t) {
-    t.nullable.field("user", {
+    t.nullable.field("getOneUser", {
       type: "User",
       args: {
         id: nonNull(intArg()),
@@ -48,6 +49,18 @@ export const UserQuery = extendType({
     });
   },
 });
+export const allUserQuery = extendType({
+    type: "Query",
+    definition(t) {
+        t.nonNull.list.nonNull.field("allUsers", {
+            type: "User",
+            resolve(_root, _args, ctx) {
+                return ctx.prisma.user.findMany();
+            },
+        });
+    },
+});
+
 
 export const UpdateUser = extendType({
   type: "Mutation",
@@ -84,11 +97,11 @@ export const DeleteUser = extendType({
     t.nonNull.field("deleteUser", {
       type: "User",
       args: {
-        id: nonNull(intArg()),
+        email: nonNull(stringArg()),
       },
       resolve(_root, args, ctx) {
         return ctx.prisma.user.delete({
-          where: { id: args.id },
+          where: { email: args.email},
         });
       },
     });

@@ -36,10 +36,9 @@ export interface NexusGenObjects {
     response: string; // String!
   }
   Collection: { // root type
-    author: string; // String!
-    authorEmail: string; // String!
-    description: string; // String!
-    id: number; // Int!
+    author?: string | null; // String
+    authorEmail?: string | null; // String
+    description?: string | null; // String
     title: string; // String!
   }
   Mutation: {};
@@ -70,10 +69,9 @@ export interface NexusGenFieldTypes {
     response: string; // String!
   }
   Collection: { // field return type
-    author: string; // String!
-    authorEmail: string; // String!
-    description: string; // String!
-    id: number; // Int!
+    author: string | null; // String
+    authorEmail: string | null; // String
+    description: string | null; // String
     title: string; // String!
   }
   Mutation: { // field return type
@@ -90,7 +88,8 @@ export interface NexusGenFieldTypes {
   Query: { // field return type
     allCards: NexusGenRootTypes['Card'][]; // [Card!]!
     allCollections: NexusGenRootTypes['Collection'][]; // [Collection!]!
-    user: NexusGenRootTypes['User'] | null; // User
+    allUsers: NexusGenRootTypes['User'][]; // [User!]!
+    getOneUser: NexusGenRootTypes['User'] | null; // User
   }
   User: { // field return type
     email: string; // String!
@@ -111,7 +110,6 @@ export interface NexusGenFieldTypeNames {
     author: 'String'
     authorEmail: 'String'
     description: 'String'
-    id: 'Int'
     title: 'String'
   }
   Mutation: { // field return type name
@@ -128,7 +126,8 @@ export interface NexusGenFieldTypeNames {
   Query: { // field return type name
     allCards: 'Card'
     allCollections: 'Collection'
-    user: 'User'
+    allUsers: 'User'
+    getOneUser: 'User'
   }
   User: { // field return type name
     email: 'String'
@@ -159,10 +158,10 @@ export interface NexusGenArgTypes {
       id: number; // Int!
     }
     deleteCollection: { // args
-      id: number; // Int!
+      title: number; // Int!
     }
     deleteUser: { // args
-      id: number; // Int!
+      email: string; // String!
     }
     updateCard: { // args
       collectionName: string; // String!
@@ -184,7 +183,7 @@ export interface NexusGenArgTypes {
     }
   }
   Query: {
-    user: { // args
+    getOneUser: { // args
       id: number; // Int!
     }
   }
